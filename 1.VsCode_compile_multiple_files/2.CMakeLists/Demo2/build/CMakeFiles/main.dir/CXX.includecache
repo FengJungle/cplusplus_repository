@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+F:/Jungle/1.Program/4.C++/0.Study/1.VsCode_compile_multiple_files/2.CMakeLists/Demo2/common/common.h
+
+F:/Jungle/1.Program/4.C++/0.Study/1.VsCode_compile_multiple_files/2.CMakeLists/Demo2/main.cpp
+iostream
+-
+common/common.h
+F:/Jungle/1.Program/4.C++/0.Study/1.VsCode_compile_multiple_files/2.CMakeLists/Demo2/common/common.h
+

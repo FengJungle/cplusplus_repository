@@ -1,0 +1,2 @@
+E:\TDM-GCC-64\bin\ar.exe qc libcommon.a CMakeFiles/common.dir/common.cpp.obj
+E:\TDM-GCC-64\bin\ranlib.exe libcommon.a

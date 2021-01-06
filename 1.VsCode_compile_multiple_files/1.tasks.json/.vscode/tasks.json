@@ -1,0 +1,30 @@
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "C/C++: g++.exe build active file",
+            "command": "E:\\TDM-GCC-64\\bin\\g++.exe",
+            "args": [
+                "-g",
+                //"${file}",
+                "${workspaceFolder}\\func\\func.cpp",
+                "${workspaceFolder}\\myMathlib\\myMathlib.cpp",
+                "${workspaceFolder}\\main.cpp",
+                "${workspaceFolder}\\common.cpp",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ],
+    "version": "2.0.0"
+}
