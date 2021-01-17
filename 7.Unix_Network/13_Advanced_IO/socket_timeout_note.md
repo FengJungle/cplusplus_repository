@@ -1,7 +1,7 @@
 1. 套接口超时
 有3种方法给套接口上的IO操作设置超时：
 （1）调用alarm，在到达指定时间时产生SIGALARM信号
-'''
+```
 static void connect_alarm(int signo)
 {
     return;
@@ -30,9 +30,9 @@ int conect_timeo(int sockfd, const SA*saptr, socklen_t salen, int nsec)
     Signal(SIGALRM, sigfunc);
     return n;
 }
-'''
+```
 （2）使用select阻塞在等待的IO上，select的最后一个入口参数可设定超时时间
-
+```
 int readable_timeo(int fd, int sec)
 {
     fd_set rset;
@@ -69,10 +69,11 @@ void dg_cli(FILE* fp, int sockfd, const sockaddr* pservaddr, socklen_t servlen)
         }
     }
 }
-
+```
 （3）使用setsockopt函数，设定SO_RECVTIMO和SO_SNDTIMEO套接口选项
-
+```
 struct timeval tv;
 tv.tv_sec = user_set_sec;
 tv.tv_usec = user_set_usec;
 setsockopt(sockfd, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv));
+```
