@@ -381,3 +381,53 @@ ifnull()：空处理函数
             emp e1
         on
             e.mgr = e1.empno;
+15. 子查询
+    15.1. 什么是子查询：select语句中嵌套select语句，被嵌套的select与是子查询
+          子查询可以出现在哪里：
+            select
+                ..(select).
+            from
+                ..(select).
+            where
+                ..(select).
+    Example: 
+    1. from后面子查询
+    找出每个部门的平均薪资的薪资等级
+             1. 找出每个部门的平均薪资： select  deptno, avg(sal) from emp group by deptno;
+             2. 将以上查询结果当作临时表t，让t表和salgrade表连接，条件是t.avgsal between s.losal and s.hisal;
+            select 
+                t.*, s.grade 
+            from 
+                (select  deptno, avg(sal) as avgsal from emp group by deptno) t
+            join 
+                salgrade s 
+            on 
+                t.avgsal between s.losal and s.hisal;
+    2. 找出每个部门平均的薪资等级
+         1. 找出每个员工的薪水等级：select e.ename, e.sal, e.deptno, s.grade from emp e join salgrade s on e.sal between s.losal and s.hisal;
+         2. 基于以上结果，继续按照deptno分组，求grade平均值
+        select 
+            .deptno, avg(s.grade)
+        from 
+            emp e
+        join 
+            salgrade s
+        on
+            e.sal between s.losal and s.hisal
+        group by
+            e.deptno; 
+    3. select后面子查询
+    Example: 找出每个员工所在的部门名称，要求显示员工名和部门名
+        select e.ename, d.dname from emp e join dept d on e.deptno = d.deptno;
+        select e.ename, (select d.dname from dept where e.deptno = d.deptno)) as dname from emp e;
+15. union:可以将查询结果相加
+Example：找出工作岗位是SALESMAN和MANAGER的员工
+    方法1. select ename, job from emp where job in ('MANAGER', 'SALESMAN');
+    方法2. select ename, job from emp where job='MANAGER' or job='SALESMAN';
+    方法3：select ename, job from emp where job='MANAGER'
+           union
+           select ename, job from emp where job='SALESMAN';
+    两张不相干的表的数据拼接到一起显示
+    select ename from emop
+    union
+    select dname from dept;
