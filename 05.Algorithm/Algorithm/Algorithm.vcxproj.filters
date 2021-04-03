@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="头文件\Sort">
+      <UniqueIdentifier>{bae809a9-2f8c-471d-98bc-0ec4468dbe77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Heap">
+      <UniqueIdentifier>{ee3686dc-d579-4990-860b-36be1075ac54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Binary">
+      <UniqueIdentifier>{1d5c19e5-bd31-45b3-b662-641b4c152aaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\UnionFind">
+      <UniqueIdentifier>{255b7f4b-392f-48c6-8eb8-93917fa90012}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Graph">
+      <UniqueIdentifier>{dfc56066-767d-4423-9033-a7753071934c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\MinimumSpanTree">
+      <UniqueIdentifier>{f81c3030-481f-4a95-a12b-ac63415011cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\ShortestPath">
+      <UniqueIdentifier>{b228ff54-ab58-4578-8c81-bf93e71e8c08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\LinkedList">
+      <UniqueIdentifier>{d68a383a-81a8-472e-b9c8-b27e618cba40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Stack">
+      <UniqueIdentifier>{a9b2674f-0395-4fb9-afc0-edc2a7f7b36e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Queue">
+      <UniqueIdentifier>{5dcd6647-1609-4311-b525-dbaa012a18b5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Sort\BubbleSort.h">
+      <Filter>头文件\Sort</Filter>
+    </ClInclude>
+    <ClInclude Include="Sort\InsertSort.h">
+      <Filter>头文件\Sort</Filter>
+    </ClInclude>
+    <ClInclude Include="Sort\MergeSort.h">
+      <Filter>头文件\Sort</Filter>
+    </ClInclude>
+    <ClInclude Include="Sort\QuickSort.h">
+      <Filter>头文件\Sort</Filter>
+    </ClInclude>
+    <ClInclude Include="Sort\SelectionSort.h">
+      <Filter>头文件\Sort</Filter>
+    </ClInclude>
+    <ClInclude Include="Sort\ShellSort.h">
+      <Filter>头文件\Sort</Filter>
+    </ClInclude>
+    <ClInclude Include="Sort\SortTestHelper.h">
+      <Filter>头文件\Sort</Filter>
+    </ClInclude>
+    <ClInclude Include="Heap\Heap.h">
+      <Filter>头文件\Heap</Filter>
+    </ClInclude>
+    <ClInclude Include="Heap\HeapSort.h">
+      <Filter>头文件\Heap</Filter>
+    </ClInclude>
+    <ClInclude Include="Binary\BinarySearch.h">
+      <Filter>头文件\Binary</Filter>
+    </ClInclude>
+    <ClInclude Include="Binary\BinaryTree.h">
+      <Filter>头文件\Binary</Filter>
+    </ClInclude>
+    <ClInclude Include="UnionFind\UnionFind1.h">
+      <Filter>头文件\UnionFind</Filter>
+    </ClInclude>
+    <ClInclude Include="UnionFind\UnionFindTestHelper.h">
+      <Filter>头文件\UnionFind</Filter>
+    </ClInclude>
+    <ClInclude Include="UnionFind\UnionFind2.h">
+      <Filter>头文件\UnionFind</Filter>
+    </ClInclude>
+    <ClInclude Include="UnionFind\UnionFind3.h">
+      <Filter>头文件\UnionFind</Filter>
+    </ClInclude>
+    <ClInclude Include="UnionFind\UnionFind4.h">
+      <Filter>头文件\UnionFind</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph\DenseGraph.h">
+      <Filter>头文件\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph\SparseGraph.h">
+      <Filter>头文件\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph\ReadGraph.h">
+      <Filter>头文件\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph\Component.h">
+      <Filter>头文件\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph\Path.h">
+      <Filter>头文件\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph\ShortestPath.h">
+      <Filter>头文件\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="MinimumSpanTree\Edge.h">
+      <Filter>头文件\MinimumSpanTree</Filter>
+    </ClInclude>
+    <ClInclude Include="MinimumSpanTree\ReadGraph.h">
+      <Filter>头文件\MinimumSpanTree</Filter>
+    </ClInclude>
+    <ClInclude Include="MinimumSpanTree\ShortestPath.h">
+      <Filter>头文件\MinimumSpanTree</Filter>
+    </ClInclude>
+    <ClInclude Include="MinimumSpanTree\SparseGraph.h">
+      <Filter>头文件\MinimumSpanTree</Filter>
+    </ClInclude>
+    <ClInclude Include="MinimumSpanTree\DenseGraph.h">
+      <Filter>头文件\MinimumSpanTree</Filter>
+    </ClInclude>
+    <ClInclude Include="MinimumSpanTree\MinHeap.h">
+      <Filter>头文件\MinimumSpanTree</Filter>
+    </ClInclude>
+    <ClInclude Include="MinimumSpanTree\LazyPrimMST.h">
+      <Filter>头文件\MinimumSpanTree</Filter>
+    </ClInclude>
+    <ClInclude Include="MinimumSpanTree\IndexMinHeap.h">
+      <Filter>头文件\MinimumSpanTree</Filter>
+    </ClInclude>
+    <ClInclude Include="MinimumSpanTree\PrimMST.h">
+      <Filter>头文件\MinimumSpanTree</Filter>
+    </ClInclude>
+    <ClInclude Include="MinimumSpanTree\UnionFind.h">
+      <Filter>头文件\MinimumSpanTree</Filter>
+    </ClInclude>
+    <ClInclude Include="MinimumSpanTree\KruskalMST.h">
+      <Filter>头文件\MinimumSpanTree</Filter>
+    </ClInclude>
+    <ClInclude Include="ShortestPath\DenseGraph.h">
+      <Filter>头文件\ShortestPath</Filter>
+    </ClInclude>
+    <ClInclude Include="ShortestPath\Edge.h">
+      <Filter>头文件\ShortestPath</Filter>
+    </ClInclude>
+    <ClInclude Include="ShortestPath\IndexMinHeap.h">
+      <Filter>头文件\ShortestPath</Filter>
+    </ClInclude>
+    <ClInclude Include="ShortestPath\ReadGraph.h">
+      <Filter>头文件\ShortestPath</Filter>
+    </ClInclude>
+    <ClInclude Include="ShortestPath\SparseGraph.h">
+      <Filter>头文件\ShortestPath</Filter>
+    </ClInclude>
+    <ClInclude Include="ShortestPath\Dijkstra.h">
+      <Filter>头文件\ShortestPath</Filter>
+    </ClInclude>
+    <ClInclude Include="ShortestPath\BellmanFord.h">
+      <Filter>头文件\ShortestPath</Filter>
+    </ClInclude>
+    <ClInclude Include="Binary\AVLTree\AVLTree.h">
+      <Filter>头文件\Binary</Filter>
+    </ClInclude>
+    <ClInclude Include="Sort\CountSort.h">
+      <Filter>头文件\Sort</Filter>
+    </ClInclude>
+    <ClInclude Include="Sort\RadixSort.h">
+      <Filter>头文件\Sort</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkedList\LlinkedList.h">
+      <Filter>头文件\LinkedList</Filter>
+    </ClInclude>
+    <ClInclude Include="Stack\Stack.h">
+      <Filter>头文件\Stack</Filter>
+    </ClInclude>
+    <ClInclude Include="Queue\Queue.h">
+      <Filter>头文件\Queue</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

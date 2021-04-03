@@ -1,0 +1,19 @@
+{
+    "files.associations": {
+        "algorithm": "cpp",
+        "cstdio": "cpp",
+        "type_traits": "cpp",
+        "xmemory0": "cpp",
+        "xstring": "cpp",
+        "xtr1common": "cpp",
+        "xutility": "cpp",
+        "deque": "cpp",
+        "istream": "cpp",
+        "ostream": "cpp",
+        "queue": "cpp",
+        "stack": "cpp",
+        "string": "cpp",
+        "vector": "cpp",
+        "xlocnum": "cpp"
+    }
+}

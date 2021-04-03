@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "iostream": "cpp",
+        "limits": "cpp",
+        "vector": "cpp",
+        "iosfwd": "cpp",
+        "memory": "cpp",
+        "ostream": "cpp",
+        "xmemory0": "cpp",
+        "initializer_list": "cpp",
+        "xstring": "cpp"
+    }
+}

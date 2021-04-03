@@ -1,0 +1,2 @@
+E:\TDM-GCC-64\bin\ar.exe qc libMathFunctions.a CMakeFiles/MathFunctions.dir/MathFunctions.cc.obj
+E:\TDM-GCC-64\bin\ranlib.exe libMathFunctions.a

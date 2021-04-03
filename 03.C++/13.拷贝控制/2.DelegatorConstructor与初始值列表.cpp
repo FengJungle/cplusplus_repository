@@ -1,0 +1,127 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+/*
+构造函数
+
+1. 构造函数的初始值列表
+(1). 如果类的成员是const、引用，或者属于某种未提供默认构造函数的类类型，我们必须通过
+构造函数的初始值列表为这些成员提供初值。
+(2). 初始值列表的参数初始化顺序与列表顺序无关，而与类定义时参数定义的顺序有关。
+(3). 尽量使用构造函数的初始值列表：
+    初始值列表：初始化（效率更快）
+    构造函数内部：赋值
+
+*/
+
+namespace Constructor_InitialzationList
+{
+    class A
+    {
+    public:
+        // 类A没有提供默认构造函数
+        A(int ia)
+        {
+            a = ia;
+        }
+
+    private:
+        int a;
+    };
+
+    class B
+    {
+    public:
+        // 类B定义了默认构造函数
+        B(int ib = 0) : b(ib)
+        {
+        }
+
+    private:
+        int b;
+    };
+
+    class C
+    {
+    public:
+        C(int ic, double id) : x(ic), y(id), a(10)
+        {
+        }
+
+    private:
+        // x是const成员，必须通过构造函数初始值列表赋予初值
+        const int x;
+        // y是引用类型成员，必须通过构造函数初始值列表赋予初值
+        double &y;
+        // A没有提供默认构造函数，必须通过构造函数初始值列表赋予初值
+        A a;
+        // B定义了默认构造函数，可以不必通过初始值列表进行初始化
+        B b;
+    };
+} // namespace Constructor_InitialzationList
+
+/*
+
+2. 委托构造函数
+
+委托构造函数：使用该类中的其他构造函数来完成自己的初始化过程，或者说把自己的一些（或全部）初始化指责
+委托给了其他构造函数。
+
+*/
+
+namespace DelegatingConstructor
+{
+    class A
+    {
+    public:
+        // 非委托构造函数
+        A(int ia, string istr) : a(ia), str(istr)
+        {
+            cout << "Non DelegatingConstructor: " << str << endl;
+        }
+        // 委托构造函数
+        A() : A(10, "C++ 11")
+        {
+            cout << "DelegatingConstructor 1: " << str << endl;
+        }
+        A(int ia3) : A(ia3, "")
+        {
+            cout << "DelegatingConstructor 2: " << str << endl;
+        }
+        A(string str4) : A(0, str4)
+        {
+            cout << "DelegatingConstructor 3: " << str << endl;
+        }
+        A(char ch5) : A(0, "")
+        {
+            cout << "DelegatingConstructor 4: " << str << endl;
+        }
+        ~A()
+        {
+
+        }
+
+    private:
+        int a;
+        string str;
+    };
+
+    void test()
+    {
+        A a1(10, "test 1");
+        A a2;
+        A a3(30);
+        A a4("test 4");
+        A a5('P');
+    }
+} // namespace DelegatingConstructor
+
+
+int main()
+{
+    using namespace DelegatingConstructor;
+    test();
+
+    return 0;
+}

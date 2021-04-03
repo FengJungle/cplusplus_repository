@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7D169281-02E5-4841-A2A0-183C5E31549E}</ProjectGuid>
+    <RootNamespace>Algorithm</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Binary\AVLTree\AVLTree.h" />
+    <ClInclude Include="Binary\BinarySearch.h" />
+    <ClInclude Include="Binary\BinaryTree.h" />
+    <ClInclude Include="Graph\Component.h" />
+    <ClInclude Include="Graph\DenseGraph.h" />
+    <ClInclude Include="Graph\Path.h" />
+    <ClInclude Include="Graph\ReadGraph.h" />
+    <ClInclude Include="Graph\ShortestPath.h" />
+    <ClInclude Include="Graph\SparseGraph.h" />
+    <ClInclude Include="Heap\Heap.h" />
+    <ClInclude Include="Heap\HeapSort.h" />
+    <ClInclude Include="LinkedList\LlinkedList.h" />
+    <ClInclude Include="MinimumSpanTree\DenseGraph.h" />
+    <ClInclude Include="MinimumSpanTree\Edge.h" />
+    <ClInclude Include="MinimumSpanTree\IndexMinHeap.h" />
+    <ClInclude Include="MinimumSpanTree\KruskalMST.h" />
+    <ClInclude Include="MinimumSpanTree\LazyPrimMST.h" />
+    <ClInclude Include="MinimumSpanTree\MinHeap.h" />
+    <ClInclude Include="MinimumSpanTree\PrimMST.h" />
+    <ClInclude Include="MinimumSpanTree\ReadGraph.h" />
+    <ClInclude Include="MinimumSpanTree\ShortestPath.h" />
+    <ClInclude Include="MinimumSpanTree\SparseGraph.h" />
+    <ClInclude Include="MinimumSpanTree\UnionFind.h" />
+    <ClInclude Include="Queue\Queue.h" />
+    <ClInclude Include="ShortestPath\BellmanFord.h" />
+    <ClInclude Include="ShortestPath\DenseGraph.h" />
+    <ClInclude Include="ShortestPath\Dijkstra.h" />
+    <ClInclude Include="ShortestPath\Edge.h" />
+    <ClInclude Include="ShortestPath\IndexMinHeap.h" />
+    <ClInclude Include="ShortestPath\ReadGraph.h" />
+    <ClInclude Include="ShortestPath\SparseGraph.h" />
+    <ClInclude Include="Sort\BubbleSort.h" />
+    <ClInclude Include="Sort\CountSort.h" />
+    <ClInclude Include="Sort\InsertSort.h" />
+    <ClInclude Include="Sort\MergeSort.h" />
+    <ClInclude Include="Sort\QuickSort.h" />
+    <ClInclude Include="Sort\RadixSort.h" />
+    <ClInclude Include="Sort\SelectionSort.h" />
+    <ClInclude Include="Sort\ShellSort.h" />
+    <ClInclude Include="Sort\SortTestHelper.h" />
+    <ClInclude Include="Stack\Stack.h" />
+    <ClInclude Include="UnionFind\UnionFind1.h" />
+    <ClInclude Include="UnionFind\UnionFind2.h" />
+    <ClInclude Include="UnionFind\UnionFind3.h" />
+    <ClInclude Include="UnionFind\UnionFind4.h" />
+    <ClInclude Include="UnionFind\UnionFindTestHelper.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,10 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+F:/Jungle/1.Program/4.C++/0.Study/1.VsCode_compile_multiple_files/cmake-demo-master/Demo3/math/MathFunctions.cc
+
