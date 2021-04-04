@@ -159,7 +159,7 @@ order by
 先指定from，再执行where，再执行select，最后执行order  
 Example：找出工作岗位是SALESMAN的员工，并且按照薪资的降序排列：  
 ```
-select ename, job, sal from emp where job = 'SALESMAN' order by sal, desc;  
+select ename, job, sal from emp where job = 'SALESMAN' order by sal desc;  
 ```
 # 8. 分组函数 (也叫 多行处理函数， 输入多行，输出一行)  
 - count 计数  
