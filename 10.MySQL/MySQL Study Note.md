@@ -24,49 +24,55 @@ DBMS负责执行SQL语句，通过执行SQL语句来操作DB中的数据。
   
 # 4. 常用命令   
   
-\c   命令，终止一条语句  
-exit 退出MySQL  
-  
-查看有哪些数据库：show databases;  
-创建自己的数据库：create database mydatabase;  
-使用指定数据库的数据：use mydatabase;  
-查询当前使用的是哪个数据库：select database();   
-查看数据库版本：select version();  
-查看当前数据库中有哪些表格：show tables;  
-查看表结构：desc 表名;  
-查看指定数据库中的有哪些表格：show tables from database_name;  
-删库跑路：drop database mydatabase;  
-  
-
-初始化数据：source sql脚本文件;   （注意：直接使用source命令可以执行sql脚本）  
-以sql结尾的文件，该文件中编写了大量的sql语句，这样的文件为sql脚本。  
-  
-  
-查看创建某个表的语句：show create table 表名字;  
+* \c   命令，终止一条语句  
+* exit 退出MySQL  
+* 查看有哪些数据库：show databases;  
+* 创建自己的数据库：create database mydatabase;  
+* 使用指定数据库的数据：use mydatabase;  
+* 查询当前使用的是哪个数据库：select database();   
+* 查看数据库版本：select version();  
+* 查看当前数据库中有哪些表格：show tables;  
+* 查看表结构：desc 表名;  
+* 查看指定数据库中的有哪些表格：show tables from database_name;  
+* 删库跑路：drop database mydatabase;  
+* 初始化数据：source sql脚本文件;   （注意：直接使用source命令可以执行sql脚本，以sql结尾的文件，该文件中编写了大量的sql语句，这样的文件为sql脚本。  
+* 查看创建某个表的语句：show create table 表名字;  
   
 # 5. 简单的查询语句（DQL）  
-    1). 语法格式：select 字段名1，字段名2，字段名3，... from 表名;  
-    2). 字段名可以参与数学运算，比如  查询年薪：select ename,sal*12 from emp;  
-    3). 可以给查询结构的列重命名, 比如 查询年薪：select ename,sal*12 as year_sal rom emp; （as关键字可以省略）  
-    4). SQL语句中 字符串 用单引号括起来！！  
-    5). 查询全部字段：select * from 表名;  
+- 1). 语法格式：select 字段名1，字段名2，字段名3，... from 表名;  
+- 2). 字段名可以参与数学运算，比如  查询年薪：select ename,sal*12 from emp;  
+- 3). 可以给查询结构的列重命名, 比如 查询年薪：select ename,sal*12 as year_sal rom emp; （as关键字可以省略）  
+- 4). SQL语句中 字符串 用单引号括起来！！  
+- 5). 查询全部字段：select * from 表名;  
   
 # 6. 条件查询  
 ## 1). 语法格式：  
 ```
-            select 字段，字段，...  
-            from   表名  
-            where  条件;  
-        执行顺序：先from，然后where，最后select  
+select 字段，字段，...  
+from   表名  
+where  条件;  
+```
+* 执行顺序：先from，然后where，最后select  
   
-        Example: 1. 查询工资等于5000的员工姓名，select ename from emp where sal = 5000;  
-                 2. 查询Smith的工资：select sal from emp where ename = 'Smith';（字符串 用单引号括起来）  
-                 3. 找出工资高于3000的员工：select ename, sal from emp where sal > 3000;  
-                 4. 查询工资 不等于 3000的信息：select ename, sal from emp where sal <> 3000;  
-                                              select ename, sal from emp where sal != 3000;  
-                 5. 查询工资在1100~3000之间的员工，包括1100和3000：select ename, sal from emp where sal >= 1100 && sal <= 3000;  
-                                                                select ename, sal from emp where sal >= 1100 and sal <= 3000;  
-                                                                select ename, sal from emp where sal between 1100 and 3000; // between...and...是 闭区间， 必须左小右大  
+* Example: 
+```
+// 1. 查询工资等于5000的员工姓名
+select ename from emp where sal = 5000;  
+
+// 2. 查询Smith的工资
+select sal from emp where ename = 'Smith';（字符串 用单引号括起来）  
+
+// 3. 找出工资高于3000的员工：
+select ename, sal from emp where sal > 3000;  
+
+// 4. 查询工资 不等于 3000的信息：
+select ename, sal from emp where sal <> 3000;  
+select ename, sal from emp where sal != 3000;  
+
+// 5. 查询工资在1100~3000之间的员工，包括1100和3000：
+select ename, sal from emp where sal >= 1100 && sal <= 3000;  
+select ename, sal from emp where sal >= 1100 and sal <= 3000;  
+select ename, sal from emp where sal between 1100 and 3000; // between...and...是 闭区间， 必须左小右大  
 ```
 ## 2). 条件查询  
 - 等于=  
@@ -85,12 +91,12 @@ Example: 查询哪些员工没有津贴
 select ename from emp where comm is null;  
 ```
 ## 4). and和or的优先级  
+Example：1. 找出工资大于1000并且部门编号是20或30部门的员工：
 ```
-        Example：1. 找出工资大于1000并且部门编号是20或30部门的员工：  
-                    select ename, sal, deptno from emp where sal > 1000 and deptno = 20 or deptno = 30;  （错误！）  
-                    select ename, sal, deptno from emp where sal > 1000 and (deptno = 20 or deptno = 30);（正确！）  
+select ename, sal, deptno from emp where sal > 1000 and deptno = 20 or deptno = 30;  （错误！）  
+select ename, sal, deptno from emp where sal > 1000 and (deptno = 20 or deptno = 30);（正确！）  
 ```
-        注意：运算符优先级不确定时，加小括号  
+**注意**：运算符优先级不确定时，加小括号  
 ## 5). in 等同于多个or  
 not in 不在括号指定的内容当中  
 Example: 找出工作岗位是MANAGER或SALESMAN的员工  
@@ -105,8 +111,10 @@ Example：
 ```
 // 1. 找出名字中含有'O'的员工
 select ename from emp where ename like '%O%';  
+
 // 2. 找出名字中第二个字母是'A'的员工
 select ename from emp where ename like '_A%';  
+
 // 3. 找出名字中有下划线的员工
 select ename from emp where ename like '%\_%'; 转义字符'\'  
 ```
@@ -134,18 +142,19 @@ select ename, sal from emp order by sal desc, ename asc;(指定工资降序，�
 select ename, sal from emp order by sal desc, ename;    (指定工资降序，名字默认升序)  
 ```
 ## 3). order by 后的排序条件可以根据前面指定的字段的顺序来表示： 
-Example：1. select ename, sal from emp order by 1; (按照ename升序排)  
-         2. select * from emp order by 1, 2 desc; (按照第一字段升序，第二个字段降序)  
+Example：  
+1. select ename, sal from emp order by 1; (按照ename升序排)  
+2. select * from emp order by 1, 2 desc; (按照第一字段升序，第二个字段降序)  
 ## 4). 从指定表中查询满足某条件的项目，再进行排序  
 ```
-        select  
-            字段1， 字段2，.....  
-        from   
-            表名  
-        where  
-            条件  
-        order by  
-            ......  
+select  
+    字段1， 字段2，.....  
+from   
+    表名  
+where  
+    条件  
+order by  
+    ......  
 ```
 先指定from，再执行where，再执行select，最后执行order  
 Example：找出工作岗位是SALESMAN的员工，并且按照薪资的降序排列：  
@@ -165,35 +174,53 @@ select ename, job, sal from emp where job = 'SALESMAN' order by sal, desc;
         count(*):总记录条数，与字段无关   
         count(某个字段)：该字段中不为null的记录条数，自动忽略null  
 - 4. 分组函数可以组合使用： select sum(sal), max(sal), min(sal), avg(sal) from emp;  
+Example： 
 ```
-    Example：1. 找出员工的工资总和：select sum(sal) from emp;  
-             2. 找出最高工资：select max(sal) from emp;  
-             3. 找出最低工资：select min(sal) from emp;  
-             4. 找出平均工资：select avg(sal) from emp;  
-             5. 找出总人数：  select count(*) from emp;  
-                             select count(ename) from emp;   
-             6. 找出补助总数：select count(comm) from emp;   
-                             等效于 select count(comm) from emp where comm is not null; 由于分组函数自动忽略null，因此后面的where条件可以不必加  
-             7. 找出工资高于平均工资的员工：  
-                错误输入：select ename from emp where sal > avg(sal); (无效地使用了分组函数：分组函数不可直接出现在where子句中)  
+// 1. 找出员工的工资总和：
+select sum(sal) from emp;  
+
+// 2. 找出最高工资：
+select max(sal) from emp;  
+
+// 3. 找出最低工资：
+select min(sal) from emp;  
+
+// 4. 找出平均工资：
+select avg(sal) from emp;  
+
+// 5. 找出总人数：  
+select count(*) from emp;  
+select count(ename) from emp; 
+
+// 6. 找出补助总数：
+select count(comm) from emp;   
+// 等效于 
+select count(comm) from emp where comm is not null; 由于分组函数自动忽略null，因此后面的where条件可以不必加  
+
+// 7. 找出工资高于平均工资的员工：  
+// 错误输入：
+select ename from emp where sal > avg(sal); (无效地使用了分组函数：分组函数不可直接出现在where子句中)  
 ```
 # 9. 单行处理函数：输入多少行数据，就输出多少行  
 ifnull()：空处理函数   
-        ifnull(可能为null的数据，被当作什么来处理)  
-        Example：1.计算每个员工的年薪：select ename, (sal+comm)*12 from emp; (注意：只要运算式子中有NULL，运算结果也会是NULL)  
-                                     select ename, (sal + ifnull(comm, 0))*12 from emp; (如果comm为null，视comm为0)  
-                 2. select ename, ifnull(comm, 0) from emp; 查询员工名字，如果comm为null，则视comm为0  
-  
+ifnull(可能为null的数据，被当作什么来处理)  
+Example：
+- 1.计算每个员工的年薪：
+```
+select ename, (sal+comm)*12 from emp; (注意：只要运算式子中有NULL，运算结果也会是NULL)  
+select ename, (sal + ifnull(comm, 0))*12 from emp; (如果comm为null，视comm为0)  
+select ename, ifnull(comm, 0) from emp; 查询员工名字，如果comm为null，则视comm为0  
+```
 # 10. group by 和 having  
 * group by:按照某个字段或者某些字段进行分组  
 * having： 对分组之后的数据进行再次过滤，having是group by的搭档，只能跟在group by后面  
 ```
-        select  
-            xx  
-        from  
-            表名  
-        group by  
-            指定字段  
+select  
+    xx  
+from  
+    表名  
+group by  
+    指定字段  
 ```
 注意：  
 * 1. 分组函数一般都会和group by联合使用，这是它为什么叫分组函数的原因   
@@ -238,18 +265,17 @@ select deptno, avg(sal) from emp group by deptno having avg(sal) > 2000; 注意�
 ```
 # 11. 去除重复记录
 ``` 
-    select distinct job from emp;   
+select distinct job from emp;   
 ```
 * 注意：distinct只能出现在所有字段的最前面    
 ```
-    select distinct 字段1，字段2，...， from emp; 所有字段联合去重  
+select distinct 字段1，字段2，...， from emp; 所有字段联合去重  
 ```  
 * Example：
 1. 统计岗位的数量
 ```
 select count(distinct job) from emp; // 取出job中的重复记录，然后统计数量    
 ```
-  
 # 12. 一个完整的DQL语句该怎么写？    
 ```
 select     5  
@@ -451,12 +477,12 @@ on
 ## 15.1. 什么是子查询：select语句中嵌套select语句，被嵌套的select与是子查询  
 子查询可以出现在哪里：  
 ```
-            select  
-                ..(select).  
-            from  
-                ..(select).  
-            where  
-                ..(select).  
+select  
+    ..(select).  
+from  
+    ..(select).  
+where  
+    ..(select).  
 ```
 #### Example 1. from后面子查询  
 找出每个部门的平均薪资的薪资等级  
@@ -505,45 +531,45 @@ select ename, job from emp where job='MANAGER' or job='SALESMAN';
 ```
 #####    方法3：
 ```
-    select ename, job from emp where job='MANAGER'  
-    union  
-    select ename, job from emp where job='SALESMAN';  
+select ename, job from emp where job='MANAGER'  
+union  
+select ename, job from emp where job='SALESMAN';  
 ```
 两张不相干的表的数据拼接到一起显示  
 ```
-    select ename from emop  
-    union  
-    select dname from dept; 
+select ename from emop  
+union  
+select dname from dept; 
 ```
 # 17. limit（重点， 以后分页查询全靠它）    
 ### (1) limit是mysql特有的，其他数据库没有，不通用。    
 ### (2) limit取结果中的部分数据    
 ### (3) limit是sql语句最后执行的一个环节    
 ```
-    select     5    
-        ...        
-    from       1  
-        ...    
-    where      2   
-        ...    
-    group by   3  
-        ...    
-    having     4    
-        ...      
-    order by   6    
-        ...    
-    limit      7    
-        ...    
+select     5    
+    ...        
+from       1  
+    ...    
+where      2   
+    ...    
+group by   3  
+    ...    
+having     4    
+    ...      
+order by   6    
+    ...    
+limit      7    
+    ...    
 ```
 ### (4) 语法： limit startIndex, length // startIndex表示起始的位置, 0表示第一条数据；length表示取几个    
 ##### Example1. 取出工资前五名的员工（思路：降序取前5个）  
 ```
-            select ename, sal from emp order by sal desc limit 0, 5;  
-            select ename, sal from emp order by sal desc limit 5; // 默认从0开始  
+select ename, sal from emp order by sal desc limit 0, 5;  
+select ename, sal from emp order by sal desc limit 5; // 默认从0开始  
 ```
 ##### Example2. 找出工资排名在第4~9的员工：    
 ```
-            select ename, sal from emp order by sal desc limit 3, 6;  // 注意索引从0开始    
+select ename, sal from emp order by sal desc limit 3, 6;  // 注意索引从0开始    
 ```
 ### (5) 通用的标准分页sql    
 每页显示pageSize条记录， 那么第pageNo页：(pageNo-1)*pageSize, pageSize    
@@ -551,12 +577,12 @@ select ename, job from emp where job='MANAGER' or job='SALESMAN';
 # 18. 创建表      
 ## 建表语句的语法格式：   
 ``` 
-    create table 表名(    
-        字段名1 数据类型,    
-        字段名2 数据类型,    
-        字段名3 数据类型,    
-        ...    
-    );   
+create table 表名(    
+    字段名1 数据类型,    
+    字段名2 数据类型,    
+    字段名3 数据类型,    
+    ...    
+);   
 ```
 表名在数据库中建议以t_或tbl_开头    
   
@@ -575,19 +601,19 @@ select ename, job from emp where job='MANAGER' or job='SALESMAN';
     当一个字段的数据长度不确定，例如，简介、姓名采用varchar    
 ##### Example：   
 ```  
-    创建学生表， 学生信息包括：  
-        学号：bigint    
-        姓名：varchar(255)    
-        性别：char(1)     
-        班级编号：varchar(255)  
-        生日：char(10)  
-    create table t_student(    
-        no bigint,    
-        name varchar(255),    
-        sex char(1) default 1, // default字段指定默认值，如果没有插入，默认为1      
-        classno varchar(255),   
-        birth char(10)   
-    );     
+创建学生表， 学生信息包括：  
+    学号：bigint    
+    姓名：varchar(255)    
+    性别：char(1)     
+    班级编号：varchar(255)  
+    生日：char(10)  
+create table t_student(    
+    no bigint,    
+    name varchar(255),    
+    sex char(1) default 1, // default字段指定默认值，如果没有插入，默认为1      
+    classno varchar(255),   
+    birth char(10)   
+);     
 ```
 # 19. 插入数据    
 语法格式： insert into 表名 (字段名1，字段名2，字段名3，...) values (值1，值2， 值3,...)   
@@ -634,7 +660,7 @@ drop table if exists tbl_student;
 #### 删除大表（重点）     
 delete删除数据效率慢，因为它并没有释放数据的存储空间（考虑到回滚）    
 ```
-    truncate table 表名; // 表被阶段 ，不可回滚，永久丢失！！     
+truncate table 表名; // 表被阶段 ，不可回滚，永久丢失！！     
 ``` 
 # 23. 修改表的结构
 使用工具完成即可，因为在实际开发中，一旦表格设计好以后，对表结构的修改是很少的。    
@@ -650,62 +676,62 @@ delete删除数据效率慢，因为它并没有释放数据的存储空间（�
 * 检查约束(check):注意Oracle数据库有check约束，但是mysql没有，目前mysql不支持该约束。    
 ## 24.3. 非空约束 not null  
 ```
-        create table t_user(  
-            id int,  
-            username varchar(255) not null,  
-            password varchar(255)  
-        );  
-        insert into t_user (id, password) values (1, '123'); // 该插入会失败，因为username不能为NULL    
+create table t_user(  
+    id int,  
+    username varchar(255) not null,  
+    password varchar(255)  
+);  
+insert into t_user (id, password) values (1, '123'); // 该插入会失败，因为username不能为NULL    
 ```
 ## 24.4. 唯一约束unique    
 唯一约束修饰的字段具有唯一性，不能重复，但可以为NULL  
 ##### 案例1：给某一列添加唯一性约束      
  ```
-        create table t_user(  
-            id int,  
-            username varchar(255) unique  
-        );
-        insert into t_user (1, 'zhangsan'),(2,'zhangsan'); // 报错，’zhangsan'重复  
-        insert into t_user (1, 'zhangsan'), (2, NULL), (3, NULL); // success!  
+create table t_user(  
+    id int,  
+    username varchar(255) unique  
+);
+insert into t_user (1, 'zhangsan'),(2,'zhangsan'); // 报错，’zhangsan'重复  
+insert into t_user (1, 'zhangsan'), (2, NULL), (3, NULL); // success!  
 ```
 #### 案例2：给两个字段添加唯一性约束  
 - 1. 多个字段联合起来加唯一性约束  
 ```
-        create table t_user (
-            id int,  
-            usercode varchar(255),    
-            username varchar(255),  
-            unique(usercode, username)   // 表级约束
-        );
-        isnert into t_user values (1, '111','zs'); // success
-        isnert into t_user values (2, '111','ls'); // success 
-        isnert into t_user values (3, '222','zs'); // success
-        isnert into t_user values (3, '222','zs'); // fail, 222-zs 重复
+create table t_user (
+    id int,  
+    usercode varchar(255),    
+    username varchar(255),  
+    unique(usercode, username)   // 表级约束
+);
+isnert into t_user values (1, '111','zs'); // success
+isnert into t_user values (2, '111','ls'); // success 
+isnert into t_user values (3, '222','zs'); // success
+isnert into t_user values (3, '222','zs'); // fail, 222-zs 重复
 ```
 - 2. 两个字段分别加unique约束  
 ```
-        create table t_user (
-            id int,  
-            usercode varchar(255) unique,   // 列级约束  
-            username varchar(255) unique
-        );
-        isnert into t_user values (1, '111','zs'); // success
-        isnert into t_user values (2, '111','ls'); // fail, '111'重复 
-        isnert into t_user values (3, '222','zs'); // fail， 'zs'重复
+create table t_user (
+    id int,  
+    usercode varchar(255) unique,   // 列级约束  
+    username varchar(255) unique
+);
+isnert into t_user values (1, '111','zs'); // success
+isnert into t_user values (2, '111','ls'); // fail, '111'重复 
+isnert into t_user values (3, '222','zs'); // fail， 'zs'重复
 ```
 ## 24.5. 主键约束（列级约束）  
 ```
-    create table t_user(
-        id int primary key,
-        username varchar(255), 
-        email varchar(255)
-    );
-    insert into t_user (id, username, email) values (1, 'zs', 'zs@123.com');
-    insert into t_user (id, username, email) values (2, 'ls', 'ls@123.com');
-    insert into t_user (id, username, email) values (3, 'ww', 'ww@123.com');
+create table t_user(
+    id int primary key,
+    username varchar(255), 
+    email varchar(255)
+);
+insert into t_user (id, username, email) values (1, 'zs', 'zs@123.com');
+insert into t_user (id, username, email) values (2, 'ls', 'ls@123.com');
+insert into t_user (id, username, email) values (3, 'ww', 'ww@123.com');
 
-    insert into t_user (id, username, email) values (1, 'hanliu', 'hanliu@123.com'); // Error! 主键1重复
-    insert into t_user ( username, email) values ('hanliu', 'hanliu@123.com');       // Error! 主键为NULL
+insert into t_user (id, username, email) values (1, 'hanliu', 'hanliu@123.com'); // Error! 主键1重复
+insert into t_user ( username, email) values ('hanliu', 'hanliu@123.com');       // Error! 主键为NULL
 ```
 id是主键，因为添加了主键约束，**主键字段中的数据不能重复，也不能为空**。一张表的主键约束只能有一个。 
 
@@ -726,28 +752,28 @@ id是主键，因为添加了主键约束，**主键字段中的数据不能重�
 
 ### * 使用表级约束定义主键
 ```
-    create table t_user(
-        id int, 
-        username varchar(255),
-        primary key(id)
-    );
+create table t_user(
+    id int, 
+    username varchar(255),
+    primary key(id)
+);
 
-    insert into t_user(id,username) values (1, 'zs');
-    insert into t_user(id,username) values (2, 'ls');
-    insert into t_user(id,username) values (3, 'zww');
+insert into t_user(id,username) values (1, 'zs');
+insert into t_user(id,username) values (2, 'ls');
+insert into t_user(id,username) values (3, 'zww');
 
-    insert into t_user(id,username) values (3, 'zl'); // 错误，主键重复
+insert into t_user(id,username) values (3, 'zl'); // 错误，主键重复
 ```
 * mysql提供的主键值自增（重要！）  
 ```
-    create table t_user(
-        id int primary key auto_increment, // id字段自动维护一个自增的数字，从1开始，以1递增
-        username varchar(255)
-    );
-    insert into t_user (username) values ('zs');
-    insert into t_user (username) values ('ls');
-    insert into t_user (username) values ('ww');
-    insert into t_user (username) values ('zl');
+create table t_user(
+    id int primary key auto_increment, // id字段自动维护一个自增的数字，从1开始，以1递增
+    username varchar(255)
+);
+insert into t_user (username) values ('zs');
+insert into t_user (username) values ('ls');
+insert into t_user (username) values ('ww');
+insert into t_user (username) values ('zl');
 ```
 ## 24.6 外键约束 foreign key  
 业务背景：请设计数据库，用来维护学生和班级的信息  
@@ -760,27 +786,27 @@ id是主键，因为添加了主键约束，**主键字段中的数据不能重�
 - 创建表的时候，先创建父表，再创建字表。
 
 ```
-    create table t_class(
-        cno int primary key,
-        cname varchar(255)
-    );
+create table t_class(
+    cno int primary key,
+    cname varchar(255)
+);
 
-    create table t_student(
-        sno int,
-        sname varchar(255),
-        classno int primary key,
-        foreign key(classno) references t_class(cno) // 外键classno引用表t_class的con字段，表t_student的classno字段范围只能是t_class的con字段数据范围  
-    );
+create table t_student(
+    sno int,
+    sname varchar(255),
+    classno int primary key,
+    foreign key(classno) references t_class(cno) // 外键classno引用表t_class的con字段，表t_student的classno字段范围只能是t_class的con字段数据范围  
+);
 
-    // 先插入父表，再插入子表
-    insert intro t_class values(101,'dafdsvdsafdsafgds');
-    insert intro t_class values(102,'ddafdsafdsarggdfd');
+// 先插入父表，再插入子表
+insert intro t_class values(101,'dafdsvdsafdsafgds');
+insert intro t_class values(102,'ddafdsafdsarggdfd');
 
-    insert into t_student values (1, 'zs1', 101);
-    insert into t_student values (2, 'zs2', 101);
-    insert into t_student values (3, 'zs3', 102);
-    insert into t_student values (4, 'zs4', 102);
-    insert into t_student values (5, 'zs5', 102);
+insert into t_student values (1, 'zs1', 101);
+insert into t_student values (2, 'zs2', 101);
+insert into t_student values (3, 'zs3', 102);
+insert into t_student values (4, 'zs4', 102);
+insert into t_student values (5, 'zs5', 102);
 ```
 注意：  
 1. 外键可以为NULL  
@@ -794,8 +820,8 @@ MySql默认使用的存储引擎是InnoDB方式。MySql支持很多存储引擎�
 一个事务是一个完整的业务逻辑单元，不可再分。  
 比如：银行账户转账，从A账户向B账户转账10000，需要执行两条sql语句：
 ```
-    update t_act set balance = balance - 10000 where actno = 'act-001';
-    update t_act set balance = balance + 10000 where actno = 'act-002';
+update t_act set balance = balance - 10000 where actno = 'act-001';
+update t_act set balance = balance + 10000 where actno = 'act-002';
 ```
     以上两条sql语句必须同时成功，或者同时失败，不允许出现一条成功，一条是失败。要想保证以上的两条DML语句同时成功或者同时失败，就需要使用数据库的事务机制。  
 ## 26.2. 和事务相关的只有DML语句 (insert, update, delete).  
