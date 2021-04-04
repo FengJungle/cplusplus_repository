@@ -1,8 +1,8 @@
-#ifndef _SHELL_SORT_
-#define _SHELL_SORT_
+#ifndef _HILL_SORT_
+#define _HILL_SORT_
 
 template<typename T>
-void ShellSort1(T arr[], int N){
+void HillSort1(T arr[], int N){
 	int gap = 1;
 	while (gap< N / 3){
 		gap = gap * 3 + 1;
@@ -21,7 +21,7 @@ void ShellSort1(T arr[], int N){
 }
 
 template<typename T>
-void ShellSort2(T arr[], int N){
+void HillSort2(T arr[], int N){
 	int gap = 1;
 	while (gap < N / 3){
 		gap = gap * 3 + 1;
@@ -38,4 +38,4 @@ void ShellSort2(T arr[], int N){
 	}
 }
 
-#endif // _SHELL_SORT_
+#endif // _HILL_SORT_
