@@ -57,4 +57,4 @@ int mkfifo(const char *filename,mode_t mode);
 如果一个进程以只读(只写)打开，那么这个进程会被阻塞到open，直到另一个进程以只写(只读)或者读写。  
 2）使用read函数读取内容  
 read读取普通文件，read不会阻塞。而read读取管道文件，read会阻塞运行，直到管道中有数据或者所有的写端关闭。  
-3）使用write函数发送内容，使用close函数关闭打开的文件。   
+3）使用write函数发送内容，使用close函数关闭打开的文件。
