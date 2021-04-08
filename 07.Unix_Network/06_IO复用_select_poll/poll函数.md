@@ -26,14 +26,17 @@ timeout是等待的毫秒数，这段时间内无论I/O是否准备好，poll都
 
 ## pollfd结构监控的事件类型
 ```
-#define POLLIN 0x0001  
+#define POLLIN 0x0001       // 有数据可读
+#define POLLRDNORM 0x0040   // 有普通数据可读
+
+
 #define POLLPRI 0x0002  
 #define POLLOUT 0x0004  
 #define POLLERR 0x0008  
 #define POLLHUP 0x0010  
 #define POLLNVAL 0x0020  
     
-#define POLLRDNORM 0x0040  
+
 #define POLLRDBAND 0x0080  
 #define POLLWRNORM 0x0100  
 #define POLLWRBAND 0x0200  
