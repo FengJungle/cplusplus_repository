@@ -55,7 +55,7 @@ void test1()
 /*
 2. const_cast<type> (const_var_name)
 
-const_cast可以去掉变量的const属性
+const_cast可以去掉变量的const属性（只能去掉底层const属性）
 
 */
 
@@ -89,6 +89,9 @@ void test2()
 (2). this指针
     普通的成员函数有一个隐式的入口参数，this。this始终指向“这个”，即对象本身，不能改变this的指向，
     因此，this是一个顶层const.
+
+(3). const形参既可以接收const实参，也可以接收非const实参。形参的顶层const会被忽略。
+
 class A{
 private:
     int x;
