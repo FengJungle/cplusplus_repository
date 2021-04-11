@@ -53,8 +53,8 @@ int main(int argc, char* argv[])
     constexpr int d = b;           // d是一个常量表达式
     // constexpr int e = get_e();  // get_e()不是一个constexpr函数，所以该语句错误
     constexpr int f = get_f();     // get_f()是一个constexpr函数，所以该语句正确
-    constexpr int g = get_g();     // 尽管声明get_g()是一个constexpr函数，但函数内只允许有语句return语句
-    constexpr int h = get_h(2);    // 尽管声明get_g()是一个constexpr函数，但函数内只允许有语句return语句
+    constexpr int g = get_g();     // 尽管声明get_g()是一个constexpr函数，但函数内只允许有return语句
+    constexpr int h = get_h(2);    // get_h(int a)是一个constexpr函数，且参数和返回值是字面值常量，函数内只有return语句
 }
 ```
 
