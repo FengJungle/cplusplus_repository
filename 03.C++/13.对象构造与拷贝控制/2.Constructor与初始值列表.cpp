@@ -20,7 +20,7 @@ namespace Constructor_InitialzationList
     class A
     {
     public:
-        // 类A没有提供默认构造函数
+        // 类A没有提供默认构造函数，但提供了带参构造函数
         A(int ia)
         {
             a = ia;
@@ -117,6 +117,35 @@ namespace DelegatingConstructor
     }
 } // namespace DelegatingConstructor
 
+
+/*
+
+3. constexpr构造函数
+
+(1). constexpr构造函数：字面值常量类的构造函数可以是constexpr构造函数。constexpr构造函数可以声明为=default的形式或者是删除函数的形式。
+(2). constexpr构造函数的函数体一般是空的。
+(3). constexpr构造函数必须初始化所有数据成员，初始值或者使用constexpr构造函数，或者是一条常量表达式
+
+*/
+
+class Debug
+{
+public:
+    constexpr Debug(bool b = true):hs(b), io(b), other(b){}
+    constexpr Debug(bool h, bool i, bool o):hw(h), io(i), other(0){}
+
+    constexpr bool any()
+    {
+        return hw || io || other;
+    }
+    void set_io(bool b){io = b;}
+    void set_hw(bool b){hw = b;}
+    void set_other(bool b){other = b;}
+private:
+    bool hw;    // 硬件错误
+    bool io;    // IO错误
+    bool other; // 其他错误
+};
 
 int main()
 {

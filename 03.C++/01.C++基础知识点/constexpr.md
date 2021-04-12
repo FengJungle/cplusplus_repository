@@ -20,8 +20,13 @@ constexpr int limit = mf+1; // mf+1是常量表达式
 constexpr int sz = size();  // 只有当size()是一个constexpr函数时，才是一条正确的声明语句
 ```
 
+# 3. constexpr修饰函数
 C++11中的constexpr指定的**函数返回值和参数**必须要保证是字面值，而且**必须有且只有一行return代码**，这给函数的设计者带来了更多的限制，比如通常只能通过return 三目运算符+递归来计算返回的字面值。 
 而C++14中只要保证返回值和参数是字面值就行了，函数体中可以加入更多的语句，方便了更灵活的计算。   
+
+**注意：**
+* 1. 执行初始化任务时，编译器把constexpr函数的调用替换成其结果值。为了能够在编译过程中随时展开，**constepxr函数被隐式地指定为内联函数**。
+* 2. 内联函数和constexpr函数可以在程序中多次定义。但是，对于给定的内联函数或constexpr函数，它的多个定义必须完全一致。基于这个原因，内联函数和constexpr函数通常定义在**头文件**中。
 
 ```
 int get_e()
@@ -58,7 +63,7 @@ int main(int argc, char* argv[])
 }
 ```
 
-# 3. const和constexpr的比较
+# 4. const和constexpr的比较
 * constexpr修饰指针时，与const修饰指针差异甚大！**constexpr将它定义的对象置为了顶层const**
 ```
 // p是一个指向常量的指针，即p是一个底层const
