@@ -1,0 +1,122 @@
+# lambda表达式
+
+## 1. lambda表达式介绍及示例
+一个lambda表达式表示一个**可调用的代码单元**，可以将其理解为一个未命名的内联函数。与任何函数类似，一个lambda具有一个返回类型，一个参数列表和一个函数体。与函数不同的是，lambda可能定义在函数内部。   
+lambda表达式具有如下形式：
+```
+[capture list](parameter list) -> return type {function body}
+```
+其中：
+* capture list：捕获列表，是一个lambda所在函数中定义的局部变量列表（通常为空）
+* parameter list、function body：与任何普通函数一样，表示参数列表和函数体。
+* return type：lambda返回类型，但**必须使用尾置返回**来指定返回类型。
+
+lambda表达式中，捕获列表和函数体必须存在，参数列表和返回类型可以忽略。
+```
+auto l1 = [] { cout << "Good" << endl; };
+// 调用
+l1(); // 打印“Good”
+```
+
+## 2. lambda捕获和返回
+### 2.1. 值捕获和引用捕获
+注意：捕获列表中，传值还是传引用，对程序运行结果影响很大：
+```
+int main()
+{
+    // 传值
+    int a = 0;
+    auto l = [a]() mutable {
+        cout << "a = " << a << endl;
+        ++a; // 如果没有加mutable，++a不允许的
+    };
+    a = 19;
+    l();    // 输出 a = 0
+    l();    // 输出 a = 1
+    cout << "a = " << a << endl; // 输出 a = 19
+
+    // 传引用
+    int b = 0;
+    auto l2 = [&b](int param){
+        ++b;
+        ++param;
+        cout << "b = " << b << "  param = " << param << endl;
+    };
+    b = 20;
+    l2(100);         // 输出 b = 21, param = 101
+    l2(104);         // 输出 b = 21, param = 105
+    cout << "b = " << b << endl; // 输出 b = 22
+
+    return 0;
+}
+```
+### 2.2. 隐式捕获
+lambda的捕获列表：
+* []      -- 空捕获列表，lambda不能使用所在函数中的变量
+* [names] -- names是一个逗号分隔的名字列表，这些名字都是lambda所在函数的**局部变量**，名字前如果使用了&，则为引用捕获
+* [&]     -- **隐式捕获列表**，采用引用捕获方式
+* [=]     -- **隐式捕获列表**，采用值捕获方式
+* [&, identifier_list] -- idenfier_list是一个逗号分隔列表，包含0个或多个来自所在函数的变量，这些变量都采用**值捕获方式**，而任何隐式捕获都采用引用捕获方式。
+* [=, identifier_list] -- idenfier_list是一个逗号分隔列表，包含0个或多个来自所在函数的变量，这些变量都采用**引用捕获方式**，而任何隐式捕获都采用引用捕获方式。
+##### Example：隐式捕获
+```
+int main()
+{
+    vector<int> num{1, 223, 23, 321, 115, 86};
+    int Min = 50;
+    int Max = 200;
+    // 隐式捕获，值捕获方式
+    auto tmp = find_if(num.begin(), num.end(), [=](int a){
+        return a >= Min && a <= Max;
+    });
+    cout << *tmp++ << endl; // 输出115
+    cout << *tmp << endl;   // 输出86
+
+    return 0;
+}
+```
+
+## 3. decltype用于获取lambda表达式的类型
+比如，将一个排序准则用于声明一个集合set。
+```
+auto cmp = [](ParaType1 para1, ParaType2 para2){.......};
+...
+
+std::set<Person, decltype(cmp)>collect(cmp);
+```
+
+## 4. lambda在STL算法中的使用
+#### Example 1：for_each
+
+```
+initializer_list<string> l1 = {"Good", "Bad", "Hello", "Jungle"};
+// 打印长度大于指定长度sz的字符串
+int sz = 3;
+for_each(l1.begin(), l1.end(), [&sz](string s) {if(s.length() > sz){cout<<s<<endl;}; });
+
+// 输出
+Good
+Hello
+Jungle
+```
+#### Example 2：sort
+```
+vector<int> num{1, 2, 3, 4, 5, 6};
+sort(num.begin(), num.end(), [](int a, int b) { return a > b; });
+for_each(num.begin(), num.end(), [](int a) { cout << a << " "; });
+
+// 输出
+6 5 4 3 2 1
+```
+
+#### Example 3: find_if
+```
+vector<int> num{1, 223, 23, 321, 115, 86};
+int Min = 50;
+int Max = 200;
+auto tmp = find_if(num.begin(), num.end(), [Min,Max](int a){
+    return a >= Min && a <= Max;
+});
+cout << *tmp++ << endl; // 输出115
+cout << *tmp << endl;   // 输出86
+```
