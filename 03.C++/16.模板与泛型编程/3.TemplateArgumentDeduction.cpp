@@ -105,13 +105,6 @@ namespace Test1
     }
 } // namespace Test1
 
-/*
-
-
-
-
-*/
-
 int main()
 {
 
