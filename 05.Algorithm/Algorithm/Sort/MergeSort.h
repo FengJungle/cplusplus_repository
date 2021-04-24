@@ -1,9 +1,6 @@
 #ifndef _MERGE_SORT_
 #define _MERGE_SORT_
 
-// �鲢���򣺶���ʹ��O(n)�Ŀռ䣬 ʱ�临�Ӷ�O(nlogn)
-
-// ��arr[l...mid]��arr[mid+1...r]�����ֽ��й鲢
 template<typename T>
 void __merge(T arr[], int l, int mid, int r){
 	T *aux = new T[r - l + 1];
@@ -33,7 +30,6 @@ void __merge(T arr[], int l, int mid, int r){
 	delete[] aux;
 }
 
-// �ݹ�ʹ�ù鲢���򣬶�arr[l...r]�ķ�Χ��������
 template<typename T>
 void __mergeSort(T arr[], int l, int r){
 	if (l >= r){
@@ -52,17 +48,6 @@ template<typename T>
 void MergeSort(T arr[], int N){
 	__mergeSort(arr, 0, N - 1);
 }
-
-// �Ե����ϵĹ鲢�����㷨
-//template<typename T>
-//void mergeSortBU(T arr[], int N){
-//	for (int sz = 1; sz <= N; sz *= 2){
-//		for (int i = 0; i + sz < N; i += sz + sz){
-//			// ��arr[i....i+sz-1]��arr[i+sz...i+2*sz-1]���й鲢
-//			__merge(arr, i, i + sz - 1, min(i + sz + sz - 1, n - 1);
-//		}
-//	}
-//}
 
 // 自底向上归并排序
 void mergeSortBU(int arr[], int N)
