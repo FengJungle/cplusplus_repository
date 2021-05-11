@@ -4,7 +4,7 @@
 # 1. SQL、DB、DBMS的关系  
 - 1). DB：database，数据库   
 - 2). DBMS：数据监控管理系统，常见的有MySql，Oracle，DB2，SQLServer  
-- 3). SQL：结构化查询语言，是一门标准通用的余元。标准的sql适合于所有的数据库产品。  
+- 3). SQL：结构化查询语言，是一门标准通用的语言。标准的sql适合于所有的数据库产品。  
 SQL属于高级语言，SQL语句在执行的时候，实际上内部也会先进性编译，然后再执行sql（sql语句的编译由DBMS完成）  
   
 DBMS负责执行SQL语句，通过执行SQL语句来操作DB中的数据。  
